@@ -1,0 +1,42 @@
+version: '2'
+
+services:
+  # redis:
+  #   image: redis:alpine
+  #   container_name: redis
+  #   ports:
+  #     - "6379:6379"
+  #   command: redis-server --appendonly yes
+  #   volumes:
+  #     - redisData: /data
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    command: mysqld --user=root
+    volumes:
+      - mysqlData:/var/lib/mysql
+      - ~/dump:/dump
+    environment:
+      - MYSQL_DATABASE=projectName-production
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
+  app:
+    image: "172.31.19.46:5000/scoring:0.0.3"
+    container_name: scoring
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - logData:/app/log
+    depends_on:
+      - mysql
+      # - redis
+    command: pm2 start --name "projectName" --no-daemon index.js
+
+    # Expose ports [HOST:CONTAINER}
+    ports:
+      - "4040:4040"
+volumes:
+  logData:
+  mysqlData:
+  # redisData:

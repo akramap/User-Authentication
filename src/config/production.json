@@ -1,0 +1,35 @@
+{
+  "env": "production",
+  "port": 4040,
+  "bodyLimit": "5mb",
+  "corsHeaders": ["Origin, X-Requested-With, Content-Type, Accept"],
+  "corsOrigin": ["*", "http://www.example.com"],
+  "database": {
+    "host": "localhost",
+    "username": "root",
+    "password": "root",
+    "port": "3306",
+    "database": "projectName-production",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "redis": {
+    "host": "0.0.0.0",
+    "port": "6379",
+    "password": "Qw3r7y"
+  },
+  "jwt": {
+    "privateKey" : "someDevKey",
+    "tokenIssuer" : "The Organization",
+    "tokenExpiry" : "60d"
+  },
+  "hashKey": "SomeRandomKey",
+  "domainPrefix": "http://www.example.com",
+  "emailFrom" :"info@cartoonmango.com",
+  "amazonAWS":{
+    "accessKeyId":"",
+    "secretAccessKey":"",
+    "bucketName":""
+  },
+  "autoBackup": false
+}

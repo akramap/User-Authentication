@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./*"],
+      "localization": ["./localization"],
+      "utils": ["./utils"],
+      "helpers": ["./src/helpers"],
+      "database": ["./src/database"],
+      "@config": ["./src/config"]
+    },
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["./**/*"]
+}
